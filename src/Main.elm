@@ -1,7 +1,8 @@
 module Main exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (src)
+import Html.Attributes exposing (..)
+import Html.Events exposing (..)
 
 
 ---- MODEL ----
@@ -26,15 +27,15 @@ type alias Meeting =
 
 
 bob =
-    { email = "String"
-    , name = "Bob"
+    { email = "bob@bob.com"
+    , name = "Bobby B"
     , agenda = []
     }
 
 
 sue =
-    { email = "String"
-    , name = "Sue"
+    { email = "sue@sue.com"
+    , name = "Sue S"
     , agenda = []
     }
 
@@ -79,14 +80,14 @@ init =
 
 type Msg
     = NoOp
-    | AddAgendaItem String Int
+    | AddAgendaItem String Int String
     | AddMeeting
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        AddAgendaItem item meetingId ->
+        AddAgendaItem item meetingId email ->
             ( model, Cmd.none )
 
         AddMeeting ->
@@ -105,6 +106,7 @@ viewMeeting meeting =
     div []
         [ text (toString meeting.id_ ++ ":  ")
         , text meeting.title
+        , p [] [ text "Attendees"]
         , meeting.attendees
             |> List.map viewUser
             |> ul []
@@ -114,7 +116,21 @@ viewMeeting meeting =
 viewUser : User -> Html Msg
 viewUser user =
     div []
-        []
+        [text (user.name ++ ": " ++ user.email)
+        , button
+            [ type_ "button"
+            , onClick (AddAgendaItem "blah" 1 "bob@bob.com")
+            ]
+            [text "Add Agenda Item"]
+        , user.agenda
+            |> List.map viewAgenda
+            |> ul []
+        ]
+
+viewAgenda : String -> Html Msg
+viewAgenda agendaItem =
+    li []
+       [text (agendaItem)]
 
 
 view : Model -> Html Msg
@@ -123,7 +139,7 @@ view model =
         [ h1 [] [ text "Meetings" ]
         , model.meetings
             |> List.map viewMeeting
-            |> ul []
+            |> div []
         ]
 
 
