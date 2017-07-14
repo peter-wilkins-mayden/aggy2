@@ -4,7 +4,7 @@ import Navigation exposing (Location)
 
 
 type alias User =
-    { email : UserId
+    { email : String
     , name : String
     , agenda : List String
     }
@@ -64,17 +64,9 @@ type alias Model =
 
 type Route
     = MeetingsRoute
-    | MeetingRoute MeetingId
-    | UserRoute UserId
+    | MeetingRoute Int
+    | UserRoute String
     | NotFoundRoute
-
-
-type alias UserId =
-    String
-
-
-type alias MeetingId =
-    String
 
 
 type Msg

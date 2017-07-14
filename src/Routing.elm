@@ -9,7 +9,7 @@ matchers : Parser (Route -> a) a
 matchers =
     oneOf
         [ map MeetingsRoute top
-        , map MeetingRoute (s "meeting" </> string)
+        , map MeetingRoute (s "meeting" </> int)
         , map UserRoute (s "user" </> string)
         ]
 

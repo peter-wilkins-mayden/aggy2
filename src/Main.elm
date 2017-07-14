@@ -75,13 +75,13 @@ viewAgenda agendaItem =
         [ text agendaItem ]
 
 
-
 viewMeetingAsList : Meeting -> Html Msg
 viewMeetingAsList meeting =
     div []
         [ a [ href ("#meeting/" ++ toString meeting.id_) ]
             [ text meeting.title ]
         ]
+
 
 viewAllMeetings : Model -> Html Msg
 viewAllMeetings model =
@@ -93,8 +93,6 @@ viewAllMeetings model =
         ]
 
 
-
-
 view : Model -> Html Msg
 view model =
     div []
@@ -104,8 +102,8 @@ view model =
 page : Model -> Html Msg
 page model =
     case model.route of
-        UserRoute id_ ->
-            viewUser model id_
+        UserRoute email ->
+            viewUser model email
 
         MeetingRoute id_ ->
             viewMeeting model id_
