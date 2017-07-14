@@ -2,7 +2,7 @@ module Meeting exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class, href, value)
-import Models exposing (Meeting)
+import Models exposing (..)
 
 
 view : Meeting -> Html Msg

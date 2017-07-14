@@ -1,5 +1,7 @@
 module Models exposing (..)
 
+import Navigation exposing (Location)
+
 
 type alias User =
     { email : UserId
@@ -73,3 +75,10 @@ type alias UserId =
 
 type alias MeetingId =
     String
+
+
+type Msg
+    = NoOp
+    | AddAgendaItem String Int String
+    | AddMeeting
+    | OnLocationChange Location
