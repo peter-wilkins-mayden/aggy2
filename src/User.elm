@@ -1,9 +1,14 @@
 module User exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, href, value)
+import Html.Attributes exposing (..)
 import Models exposing (..)
+import Html.Events exposing (..)
 
+viewAgenda : String -> Html Msg
+viewAgenda agendaItem =
+    li []
+        [ text agendaItem ]
 
 view : User -> Html Msg
 view model =
