@@ -1,22 +1,8 @@
 module Routing exposing (..)
 
+import Models exposing (..)
 import Navigation exposing (Location)
 import UrlParser exposing (..)
-
-
-type Route
-    = MeetingsRoute
-    | MeetingRoute MeetingId
-    | UserRoute UserId
-    | NotFoundRoute
-
-
-type alias UserId =
-    String
-
-
-type alias MeetingId =
-    String
 
 
 matchers : Parser (Route -> a) a

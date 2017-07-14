@@ -2,6 +2,7 @@ module User exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class, href, value)
+import Models exposing (User)
 
 
 view : User -> Html Msg
