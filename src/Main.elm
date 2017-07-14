@@ -75,14 +75,24 @@ viewAgenda agendaItem =
         [ text agendaItem ]
 
 
+
+viewMeetingAsList : Meeting -> Html Msg
+viewMeetingAsList meeting =
+    div []
+        [ a [ href ("#meeting/" ++ toString meeting.id_) ]
+            [ text meeting.title ]
+        ]
+
 viewAllMeetings : Model -> Html Msg
 viewAllMeetings model =
     div []
         [ h1 [] [ text "Meetings" ]
         , model.meetings
-            |> List.map viewMeeting
+            |> List.map viewMeetingAsList
             |> div []
         ]
+
+
 
 
 view : Model -> Html Msg

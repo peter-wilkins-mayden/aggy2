@@ -16,16 +16,7 @@ view model =
         [ text "User page" ]
 
 
-viewUser : User -> Html Msg
-viewUser user =
+viewUser : Model-> UserId -> Html Msg
+viewUser model userId =
     div []
-        [ text (user.name ++ ": " ++ user.email)
-        , button
-            [ type_ "button"
-            , onClick (AddAgendaItem "blah" 1 "bob@bob.com")
-            ]
-            [ text "Add Agenda Item" ]
-        , user.agenda
-            |> List.map viewAgenda
-            |> ul []
-        ]
+        []
